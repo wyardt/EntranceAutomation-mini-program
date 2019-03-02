@@ -1,13 +1,17 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+<import src="../common/head.wxml" />
+<import src="../common/foot.wxml" />
+
+<view class="container"> 
+  <text class="dinnerTime"> Welcome, {{userInfo.nickName}}</text>
+  <text class="dinnerTime"> Dinner time is at {{dinnerTime}} </text>
+  <text class="dinnerTime"> Below is the way to my house </text>
+  <text class="dinnerTime"> Once you arrive, enter "502" at the gate </text>
+
+  <view>
+    <map id="myMap" show-location />
+    <button type="primary" bindtap="openLocation">Check where to go</button>
+    <button bindtap="moveToMyLocation">Move to my position</button>
+    <button bindtap="birdsEyeView">Bird's-eye view</button>
   </view>
 </view>

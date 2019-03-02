@@ -16,6 +16,13 @@
   color: #aaa;
 }
 
+.dinnerTime {
+  color:rgb(0, 26, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .usermotto {
-  margin-top: 200px;
+  margin-top: 10px;
 }

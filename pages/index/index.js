@@ -4,16 +4,14 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    dinnerTime: '18:00',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  onReady(e) {
+    // 使用 wx.createMapContext 获取 map 上下文
+    this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -49,6 +47,44 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  bindViewTap: function () {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
+  },
+  bindVisitor: function () {
+    wx.navigateTo({
+      url: '../visitor/visitor'
+    })
+  },
+  bindAdmin: function () {
+    wx.navigateTo({
+      url: '../admin/admin'
+    })
+  },
+  openLocation() {
+    wx.openLocation({
+      latitude: 23.194748,
+      longitude: 113.423594,
+      name: 'Kestrels House',
+      address: 'Big daddy Road'
+    })
+  },
+  moveToMyLocation() {
+    this.mapCtx.moveToLocation()
+  },
+  birdsEyeView() {
+    this.mapCtx.includePoints({
+      padding: [1],
+      points: [{
+        latitude: 23.06467,
+        longitude: 113.330158,
+      }, {
+        latitude: 23.13467,
+        longitude: 113.330158,
+      }]
     })
   }
 })
