@@ -26,3 +26,17 @@
 .usermotto {
   margin-top: 10px;
 }
+
+.weui-agree__link {
+  display: inline;
+  color: #586c94;
+}
+.index-desc {
+  margin-top: 1rpx;
+  color: #888888;
+  font-size: 26rpx;
+}
+.index-hd {
+  padding: 10rpx;
+  text-align: left;
+}

@@ -5,15 +5,32 @@ const app = getApp()
 Page({
   data: {
     dinnerTime: '18:00',
+    dinner_msg: 'Dinner starts at',
+    dinner_msg_more: '',
     userInfo: {},
     hasUserInfo: false,
+    button_disabled: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onReady(e) {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap')
   },
-  onLoad: function () {
+  onShow: function () {
+    if (app.globalData.okok === true) {
+      this.setData({ 
+        dinner_msg: 'Dinner starts at ' + this.data.dinnerTime,
+        dinner_msg_more: 'Map below might lead you to my house',
+        button_disabled: false
+      })
+    }
+    else {
+      this.setData({ 
+        dinner_msg: 'Please check Visitor page first',
+        dinner_msg_more: '',
+        button_disabled: true
+      })
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -65,12 +82,22 @@ Page({
     })
   },
   openLocation() {
-    wx.openLocation({
-      latitude: 23.194748,
-      longitude: 113.423594,
-      name: 'Kestrels House',
-      address: 'Big daddy Road'
-    })
+    if (app.globalData.okok === true){
+      wx.openLocation({
+        latitude: 23.094748,
+        longitude: 113.323594,
+        name: 'Kestrels House',
+        address: 'West Rd. of ChiGang, No.27, 502'
+      })
+    }
+    else{
+      wx.openLocation({
+        latitude: 23.194748,
+        longitude: 113.423594,
+        name: 'Kestrels House',
+        address: 'Big daddy Road'
+      })
+    }
   },
   moveToMyLocation() {
     this.mapCtx.moveToLocation()

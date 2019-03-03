@@ -1,2 +1,23 @@
-<!--pages/admin/admin.wxml-->
-<text>pages/admin/admin.wxml</text>
+<import src="../common/head.wxml" />
+<import src="../common/foot.wxml" />
+
+<view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">token</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" type="text" placeholder="input new token here" bindinput="inputNewToken"/>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">password</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" type="text" password="true" placeholder="input password here" bindinput="inputPassword"/>
+    </view>
+  </view>
+</view>
+<button type="primary" name="data" bindtap="tryUpdateToken"> Update Token </button>
+<modal title="{{dialog.title}}" hidden="{{dialog.hidden}}" no-cancel bindconfirm="confirm">{{dialog.content}}</modal>

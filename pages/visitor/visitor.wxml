@@ -1,2 +1,12 @@
 <!--pages/visitor/visitor.wxml-->
-<text>pages/visitor/visitor.wxml</text>
+<view class="weui-cell weui-cell_input">
+  <view class="weui-cell__hd">
+    <view class="weui-label">visit code</view>
+  </view>
+  <view class="weui-cell__bd">
+    <input class="weui-input" type="text" placeholder="Input visit code here" bindinput="inputToken"/>
+  </view>
+</view>
+<button type="primary" name="data" bindtap="checkVisitorToken"> Check in </button>
+<button type="primary" name="data" bindtap="readyToOpenTheGate"> I'm DOWNSTAIRS right now! </button>
+<modal title="{{dialog.title}}" hidden="{{dialog.hidden}}" no-cancel bindconfirm="confirm">{{dialog.content}}</modal>

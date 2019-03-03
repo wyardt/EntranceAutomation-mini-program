@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/visitor/visitor",
     "pages/admin/admin",
-    "pages/visitor/visitor"
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -21,19 +21,19 @@
         "pagePath": "pages/index/index",
         "iconPath": "image/icon_component.png",
         "selectedIconPath": "image/icon_component_HL.png",
-        "text": "主页"
+        "text": "Homepage"
       },
       {
         "pagePath": "pages/visitor/visitor",
         "iconPath": "image/icon_API.png",
         "selectedIconPath": "image/icon_API_HL.png",
-        "text": "访客"
+        "text": "Visitor"
       },
       {
         "pagePath": "pages/admin/admin",
         "iconPath": "image/icon_cloud.png",
         "selectedIconPath": "image/icon_cloud_HL.png",
-        "text": "管理"
+        "text": "Management"
       }
     ]
   }
