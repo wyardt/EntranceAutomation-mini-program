@@ -11,9 +11,15 @@ Page({
       title: '',
       content: '',
       hidden: true
-    }
+    },
+    date: '2019-10-01',
+    time: '18:00',
+    updateSuccess: false
   },
 
+  onReady: function (e) {
+    
+  },
   inputNewToken: function (e) {
     this.data.token_in = e.detail.value
     if (e.detail.value.length === 4) {
@@ -21,25 +27,52 @@ Page({
       wx.hideKeyboard()
     }
   },
+
   inputPassword: function (e) {
     this.data.password_in = e.detail.value
   },
+
+  updateSuccess: function () {
+    this.data.updateSuccess = true
+  },
+
+  updateFail: function () {
+    this.data.updateSuccess = false
+  },
+
+  
   tryUpdateToken: function () {
-    if (this.data.password_in === this.data.password) {
+    //小程序端调用方法
+    var that = this;
+    
+
+    if (true) {
       this.setData({
         'dialog.hidden': false,
-        'dialog.title': 'Done',
-        'dialog.content': 'Copy done'
+        'dialog.title': '成功',
+        'dialog.content': '开饭时间已更新'
       })
       app.globalData.todays_token = this.data.token_in
+      
     }
     else {
       this.setData({
         'dialog.hidden': false,
-        'dialog.title': 'oops',
-        'dialog.content': 'seems not to be the right one'
+        'dialog.title': '嘿',
+        'dialog.content': '密码不正确'
       })
     }
+  },
+  bindDateChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+
+  bindTimeChange(e) {
+    this.setData({
+      time: e.detail.value
+    })
   },
   confirm() {
     this.setData({

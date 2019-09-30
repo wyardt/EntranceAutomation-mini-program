@@ -26,6 +26,7 @@ Page({
       this.data.has_token = false
     }
   },
+  
   checkVisitorToken: function(){
     this.data.token_validation = false
     app.globalData.okok = false
@@ -36,23 +37,23 @@ Page({
     if (this.data.token_validation === true){
       this.setData({
         'dialog.hidden': false,
-        'dialog.title': 'Be my guest',
-        'dialog.content': 'Welcome'
+        'dialog.title': '已通知主人~',
+        'dialog.content': '欢迎'
       })
     }
     else{
       this.setData({
         'dialog.hidden': false,
-        'dialog.title': 'oops',
-        'dialog.content': 'maybe the token is not for today'
+        'dialog.title': '哎呀',
+        'dialog.content': '聚餐似乎不在今天'
       })
     }
   },
-  readyToOpenTheGate(){
-    setData({
+  /*readyToOpenTheGate(){
+    this.setData({
       countDown30s: true
     })
-  },
+  },*/
   confirm() {
     this.setData({
       'dialog.hidden': true,

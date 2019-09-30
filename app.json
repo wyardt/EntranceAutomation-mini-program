@@ -1,15 +1,16 @@
 {
-  "pages":[
+  "cloud": true,
+  "pages": [
     "pages/index/index",
     "pages/visitor/visitor",
     "pages/admin/admin",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Kestrel's EntranceAutomation",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#7A7E83",
@@ -36,5 +37,6 @@
         "text": "Management"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

@@ -4,20 +4,33 @@
 <view>
   <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
-      <view class="weui-label">token</view>
+      <view class="weui-label">聚餐日期</view>
     </view>
     <view class="weui-cell__bd">
-      <input class="weui-input" type="text" placeholder="input new token here" bindinput="inputNewToken"/>
+      <picker mode="date" value="{{date}}" start="2019-09-01" end="2020-12-31" bindchange="bindDateChange">
+        <view class="weui-input">{{date}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">开饭时间</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker mode="time" value="{{time}}" start="07:01" end="22:00" bindchange="bindTimeChange">
+        <view class="weui-input">{{time}}</view>
+      </picker>
     </view>
   </view>
   <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
-      <view class="weui-label">password</view>
+      <view class="weui-label">管理密码</view>
     </view>
     <view class="weui-cell__bd">
-      <input class="weui-input" type="text" password="true" placeholder="input password here" bindinput="inputPassword"/>
+      <input class="weui-input" type="text" password="true" placeholder="输入密码" bindinput="inputPassword"/>
     </view>
   </view>
 </view>
-<button type="primary" name="data" bindtap="tryUpdateToken"> Update Token </button>
+<button type="primary" name="data" bindtap="tryUpdateToken"> 更新开饭时间 </button>
 <modal title="{{dialog.title}}" hidden="{{dialog.hidden}}" no-cancel bindconfirm="confirm">{{dialog.content}}</modal>

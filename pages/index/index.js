@@ -5,28 +5,68 @@ const app = getApp()
 Page({
   data: {
     dinnerTime: '18:00',
-    dinner_msg: 'Dinner starts at',
+    dinner_msg: '开饭时间:',
     dinner_msg_more: '',
     userInfo: {},
     hasUserInfo: false,
     button_disabled: true,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    location: {
+      latitude: 0,
+      longtitude: 0
+    }
   },
   onReady(e) {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap')
+    
+    wx.cloud.init({
+      env: 'wyardt-ea-h9jxk',
+      traceUser: true,
+    });
+    const db = wx.cloud.database({
+      env: 'wyardt-ea-h9jxk'
+    });
+    db.collection('location').where({
+      _id: 'myHouse'
+    }).get({
+      success: function (res) {
+        // res.data 包含该记录的数据
+        console.log(res.data[0].falseOne.latitude),
+        console.log(res.data[0].falseOne.longtitude),
+        latitude = res.data[0].falseOne.latitude,
+        lontitude = res.data[0].falseOne.longtitude
+      }
+    });
+
+    //小程序端调用方法
+    wx.cloud.callFunction({
+      // 需要调用的云函数名
+      name: 'submitVisitors',
+      // 传给云函数的参数
+      data: {
+        password: 5023,
+        date: 123,
+      },
+      success: function (res) {
+        console.log(res.result) // 3
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
   },
   onShow: function () {
     if (app.globalData.okok === true) {
       this.setData({ 
-        dinner_msg: 'Dinner starts at ' + this.data.dinnerTime,
-        dinner_msg_more: 'Map below might lead you to my house',
+        dinner_msg: '开饭时间是' + this.data.dinnerTime,
+        dinner_msg_more: '小程序会告诉你怎么过来',
         button_disabled: false
       })
     }
     else {
       this.setData({ 
-        dinner_msg: 'Please check Visitor page first',
+        dinner_msg: '请先在<访客>页面登记~',
         dinner_msg_more: '',
         button_disabled: true
       })
