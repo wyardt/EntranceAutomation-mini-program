@@ -12,8 +12,11 @@ exports.main = async (event, context) => {
   ret: false
   if (event.password == 5023)
   {
+    
     await db.collection('partyTime').add({
-      data: event.date, 
+      data: {
+        description: event.date, 
+      },
       success(res) {
       //成功打印消息      
       console.log('3', res)
@@ -26,6 +29,8 @@ exports.main = async (event, context) => {
         //云函数更新    
         }  
     })
+    
+    ret = true
   }
   else {
     ret = false

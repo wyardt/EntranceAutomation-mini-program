@@ -45,8 +45,8 @@ Page({
       name: 'submitVisitors',
       // 传给云函数的参数
       data: {
-        password: 5023,
-        date: 123,
+        password: "5023",
+        data: 'hello'
       },
       success: function (res) {
         console.log(res.result) // 3
