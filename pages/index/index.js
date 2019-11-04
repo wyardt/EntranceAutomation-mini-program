@@ -39,22 +39,22 @@ Page({
       }
     });
 
-    //小程序端调用方法
-    wx.cloud.callFunction({
-      // 需要调用的云函数名
-      name: 'submitVisitors',
-      // 传给云函数的参数
-      data: {
-        password: "5023",
-        data: 'hello'
-      },
-      success: function (res) {
-        console.log(res.result) // 3
-      },
-      fail: function (err) {
-        console.log(err)
-      }
-    })
+    // //小程序端调用方法
+    // wx.cloud.callFunction({
+    //   // 需要调用的云函数名
+    //   name: 'submitVisitors',
+    //   // 传给云函数的参数
+    //   data: {
+    //     password: "5023",
+    //     date: 'hello'
+    //   },
+    //   success: function (res) {
+    //     console.log(res.result) // 3
+    //   },
+    //   fail: function (err) {
+    //     console.log(err)
+    //   }
+    // })
   },
   onShow: function () {
     if (app.globalData.okok === true) {

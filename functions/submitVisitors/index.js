@@ -29,8 +29,6 @@ exports.main = async (event, context) => {
         //云函数更新    
         }  
     })
-    
-    ret = true
   }
   else {
     ret = false
